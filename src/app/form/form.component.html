@@ -1,32 +1,40 @@
 <form (ngSubmit)="onSubmit(contact)" #contact="ngForm">
-  <div style="display: inline-grid">
+  <div style="display: inline-grid; margin:20px">
     <div class="input-field">
       <label for="topic">Temat:</label>
-      <input type="text" [(ngModel)]="message.topic" #topic="ngModel" id="topic" class="validate" name="topic" required>
+      <input type="text" [(ngModel)]="message.topic" #topic="ngModel" id="topic" class="validate" name="topic" pattern="[a-zA-Z ]*" required>
+      <div *ngIf="!topic.valid&&topic.touched" class="red-text">* to pole należy wypełnić</div>
+      <!-- <div *ngIf="!topic.errors" class="red-text">* to pole może zawierać tylko litery</div> -->
     </div>
+
+
     <div class="input-field">
       <label for="message">Wiadomość:</label>
-      <textarea [(ngModel)]="message.message" name="message" #mess="ngModel" id="message" cols="50" class="materialize-textarea validate" rows="10"
-        data-length="20"  maxlength="20" (ngModelChange)="onChangeTextArea(mess)"  minlenght="5" required></textarea>
-    </div>
+      <textarea [(ngModel)]="message.message" type="text" name="message" #mess="ngModel" id="message" cols="50" class="materialize-textarea validate" rows="10"
+        data-length="20"  maxlength="20" (ngModelChange)="onChangeTextArea(mess)"  minlenght="5"  required></textarea>
+        <div *ngIf="!mess.valid&&mess.touched" class="red-text">* to pole należy wypełnić</div>
+        <!-- <div *ngIf="!mess.errors && mess.errors.minlenght" class="red-text">* pole musi mieć więcej niż 5 znaków</div> -->
+      </div>
 
     <div class="input-field inline">
       <label for="email">e-mail:</label>
       <input [(ngModel)]="message.email" type="email" id="email" #email="ngModel"  class="validate" name="email" data-error="Nie poprawy adres"
-        data-success="Poprwany" required>
+        data-success="Poprwany" email required>
+        <div *ngIf="!email.valid&&email.touched" class="red-text">* to pole należy wypełnić</div>
     </div>
 
     <div class="input-field">
       <label for="nick">Nick:</label>
       <input [(ngModel)]="message.nick" type="text" id="nick" #nick="ngModel" class="validate" name="nick" required>
+      <div *ngIf="!nick.valid&&nick.touched" class="red-text">* to pole należy wypełnić</div>
     </div>
 
     <button class="btn waves-effect waves-dark pink" [disabled]="!contact.valid" type="submit">Send</button>
 
   </div>
 </form>
-<div *ngIf="!topic.valid&&topic.touched" class="red-text"><h5>Proszę wypełnić pole TEMAT</h5></div>
-<div *ngIf="!mess.valid&&mess.touched" class="red-text"><h5>Proszę wypełnić pole WIADOMOŚĆ</h5></div>
-<div *ngIf="!email.valid&&email.touched" class="red-text"><h5>Proszę wypełnić pole EMAIL</h5></div>
-<div *ngIf="!nick.valid&&nick.touched" class="red-text"><h5>Proszę wypełnić pole NICK</h5></div>
+
+
+
+
 <!-- TODO: add validators to input -->
