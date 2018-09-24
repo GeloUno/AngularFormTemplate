@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class FormComponent implements OnInit {
   message = new TemplateMessage();
   ngOnInit() {}
-  onSubmit() {
+  onSubmit(a) {
+    console.log(a);
     console.log(this.message);
   }
 }
