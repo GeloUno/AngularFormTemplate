@@ -7,10 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
   message = new TemplateMessage();
+
   ngOnInit() {}
   onSubmit(a) {
     console.log(a);
     console.log(this.message);
+  }
+  onChangeTextArea(a){
+    let b:string = a.value;
+    console.log(a);
+    console.log(b.length);
+
+    if(b.length>5 || b.length<20)
+    {
+      
+    }
+    else
+    {
+     
+    }
+    
+
   }
 }
 

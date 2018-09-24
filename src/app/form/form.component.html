@@ -6,25 +6,27 @@
     </div>
     <div class="input-field">
       <label for="message">Wiadomość:</label>
-      <textarea [(ngModel)]="message.message" name="message" #mess id="message" cols="50" class="materialize-textarea" rows="10"
-        data-length="20" required></textarea>
+      <textarea [(ngModel)]="message.message" name="message" #mess="ngModel" id="message" cols="50" class="materialize-textarea validate" rows="10"
+        data-length="20"  maxlength="20" (ngModelChange)="onChangeTextArea(mess)"  minlenght="5" required></textarea>
     </div>
 
     <div class="input-field inline">
       <label for="email">e-mail:</label>
-      <input [(ngModel)]="message.email" type="email" id="email" class="validate" name="email" data-error="Nie poprawy adres"
+      <input [(ngModel)]="message.email" type="email" id="email" #email="ngModel"  class="validate" name="email" data-error="Nie poprawy adres"
         data-success="Poprwany" required>
     </div>
 
     <div class="input-field">
       <label for="nick">Nick:</label>
-      <input [(ngModel)]="message.nick" type="text" id="nick" class="validate" name="nick" required>
+      <input [(ngModel)]="message.nick" type="text" id="nick" #nick="ngModel" class="validate" name="nick" required>
     </div>
 
     <button class="btn waves-effect waves-dark pink" [disabled]="!contact.valid" type="submit">Send</button>
 
   </div>
 </form>
-<div *ngIf="!topic.valid&&topic.touched" class="text-red">Proszę wypełnić pole Temat</div>
-<div *ngIf="!mess.valid&&mess.touched" class="text-red">Proszę wypełnić pole Widomość minimum 5 znaków</div>
+<div *ngIf="!topic.valid&&topic.touched" class="red-text"><h5>Proszę wypełnić pole TEMAT</h5></div>
+<div *ngIf="!mess.valid&&mess.touched" class="red-text"><h5>Proszę wypełnić pole WIADOMOŚĆ</h5></div>
+<div *ngIf="!email.valid&&email.touched" class="red-text"><h5>Proszę wypełnić pole EMAIL</h5></div>
+<div *ngIf="!nick.valid&&nick.touched" class="red-text"><h5>Proszę wypełnić pole NICK</h5></div>
 <!-- TODO: add validators to input -->
