@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
- message = new TemplateMessage();
+  message = new TemplateMessage();
   ngOnInit() {}
+  onSubmit() {
+    console.log(this.message);
+  }
 }
 
 class TemplateMessage {
