@@ -1,0 +1,29 @@
+<form>
+  <div style="display: inline-grid">
+<div class="input-field">
+ <label for="topic">Temat:</label>
+ <input type="text" [(ngModel)]="message.topic" id="topic" class="validate" name="topic" required>
+</div>
+<div class="input-field">
+ <label for="message">Wiadomość:</label>
+ <textarea [(ngModel)]="message.message" name="message" id="message" cols="50" class="materialize-textarea" minlength="10" rows="10" data-length="20"required></textarea>
+</div>
+
+<div class="input-field inline">
+  <label for="email" >e-mail:</label>
+ <input [(ngModel)]="message.email" type="email" id="email" class="validate" name="email" data-error="Nie poprawy adres" data-success="Poprwany" required>
+ </div>
+
+<div class="input-field">
+ <label for="nick">Nick:</label>
+<input [(ngModel)]="message.nick" type="text" id="nick" class="validate" name="nick" required>
+</div>
+
+
+
+<button class="btn waves-effect waves-dark pink" type="submit">Send</button>
+
+</div>
+</form>
+
+
