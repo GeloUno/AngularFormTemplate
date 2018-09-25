@@ -2,25 +2,24 @@
   <div style="display: inline-grid; margin:20px">
     <div class="input-field">
       <label for="topic">Temat:</label>
-      <input type="text" [(ngModel)]="message.topic" #topic="ngModel" id="topic" class="validate" name="topic" pattern="[a-zA-Z ]*" required>
+      <input type="text" [(ngModel)]="message.topic" #topic="ngModel" id="topic" class="validate" name="topic" pattern="[a-zA-Z ]*"
+        required>
       <div *ngIf="!topic.valid&&topic.touched" class="red-text">* to pole należy wypełnić</div>
-      <!-- <div *ngIf="!topic.errors" class="red-text">* to pole może zawierać tylko litery</div> -->
     </div>
 
 
     <div class="input-field">
       <label for="message">Wiadomość:</label>
-      <textarea [(ngModel)]="message.message" type="text" name="message" #mess="ngModel" id="message" cols="50" class="materialize-textarea validate" rows="10"
-        data-length="20"  maxlength="20" (ngModelChange)="onChangeTextArea(mess)"  minlenght="5"  required></textarea>
-        <div *ngIf="!mess.valid&&mess.touched" class="red-text">* to pole należy wypełnić</div>
-        <!-- <div *ngIf="!mess.errors && mess.errors.minlenght" class="red-text">* pole musi mieć więcej niż 5 znaków</div> -->
-      </div>
+      <textarea [(ngModel)]="message.message" type="text" name="message" #mess="ngModel" id="message" cols="50" class="materialize-textarea validate"
+        rows="10" data-length="20" maxlength="20" (ngModelChange)="onChangeTextArea(mess)" minlenght="5" required></textarea>
+      <div *ngIf="!mess.valid&&mess.touched" class="red-text">* to pole należy wypełnić</div>
+    </div>
 
     <div class="input-field inline">
       <label for="email">e-mail:</label>
-      <input [(ngModel)]="message.email" type="email" id="email" #email="ngModel"  class="validate" name="email" data-error="Nie poprawy adres"
-        data-success="Poprwany" email required>
-        <div *ngIf="!email.valid&&email.touched" class="red-text">* to pole należy wypełnić</div>
+      <input [(ngModel)]="message.email" type="email" id="email" #email="ngModel" class="validate" name="email"
+        data-error="Nie poprawy adres" data-success="Poprwany" email required>
+      <div *ngIf="!email.valid&&email.touched" class="red-text">* to pole należy wypełnić</div>
     </div>
 
     <div class="input-field">
@@ -29,9 +28,25 @@
       <div *ngIf="!nick.valid&&nick.touched" class="red-text">* to pole należy wypełnić</div>
     </div>
 
+    <label for="optionSelect" class="input-field ">Lubię:</label>
+    <select [(ngModel)]="message.option" id="optionSelect" name="optionSelect" class="browser-default" required>
+      <option *ngFor="let item of optionSelect" [value]="item">{{item}}</option>
+    </select>
+    <div>
+</div>
     <button class="btn waves-effect waves-dark pink" [disabled]="!contact.valid" type="submit">Send</button>
-
   </div>
+
+  <div class="switch">
+    <label>
+      Off
+      <input type="checkbox">
+      <span class="lever"></span>
+      On
+    </label>
+  </div>
+
+
 </form>
 
 

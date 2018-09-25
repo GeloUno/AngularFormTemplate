@@ -1,4 +1,5 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -7,26 +8,22 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 })
 export class FormComponent implements OnInit {
   message = new TemplateMessage();
+  optionSelect = ['Angular', 'React', 'JavaScript', 'C#'];
+
+  @ViewChild('contact')
+  contact: NgForm;
   constructor(private el: ElementRef) {
-  //  console.log(this.el);
+    //  console.log(this.el);
   }
   ngOnInit() {
-    console.log(this.el.nativeElement.firstChild['1'].validity.valid);
+    // console.log(this.el.nativeElement.firstChild['1'].validity.valid);
   }
   onSubmit(a) {
-    // console.log(a);
-    // console.log(this.message);
+    console.log(this.message);
+    this.contact.reset();
   }
   onChangeTextArea(a) {
     const b: string = a.value;
-    console.log(this.el.nativeElement.firstChild);
-    // console.log(b.length);
-
-    if (b.length > 5 || b.length < 20) {
-    //  this.el.nativeElement.firstChild['1'].validity.valid = false;
-    } else {
-    //  this.el.nativeElement.firstChild['1'].validity.valid = true;
-    }
   }
 }
 
@@ -35,6 +32,8 @@ class TemplateMessage {
     public topic?: string,
     public message?: string,
     public email?: string,
-    public nick?: string
+    public nick?: string,
+    public option?: string,
+    public sex?: string
   ) {}
 }
